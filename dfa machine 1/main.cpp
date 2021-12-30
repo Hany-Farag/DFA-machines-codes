@@ -61,26 +61,21 @@ void checkString(string s)
     // begin to iterate on the string to check state
     for(int i=0; i<s.size(); i++)
     {
-
+      state_sequance.push_back(trans_table[ {intial_state,s[i]}]); //push which state we locate in
         if(trans_table[ {intial_state,s[i]}]!="trap")
         {
-            state_sequance.push_back(trans_table[ {intial_state,s[i]}]); //push which state we locate in
-
             // if the state is not trap state,we should continue and make initial state equal to state we locate in
             intial_state=trans_table[ {intial_state,s[i]}];
         }
         else
         {
-            state_sequance.push_back(trans_table[ {intial_state,s[i]}]); //push which state we locate in
-
             check_state_trap=1;
             break;
         }
 
     }
 
-    // print the string and state seq. of this string
-    cout<<"string which entered : "<<s<<endl;
+    //     cout<<"string which entered : "<<s<<endl;
     for (int i=0;i<state_sequance.size();i++)
     {
         if(i==state_sequance.size()-1)
